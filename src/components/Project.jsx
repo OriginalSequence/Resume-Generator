@@ -3,31 +3,24 @@ import PropTypes from 'prop-types';
 import { TextField, Button, Typography, Box, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { Add, Delete as DeleteIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
-function Experience({ experienceData, onExperienceChange }) {
+function Projects({ projectData, onProjectChange }) {
     const [isEditing, setIsEditing] = useState(true);
 
     const handleInputChange = (e, index) => {
         const { name, value } = e.target;
-        const newExperienceData = [...experienceData];
-        newExperienceData[index][name] = value;
-        onExperienceChange(newExperienceData);
+        const newProjectData = [...projectData];
+        newProjectData[index][name] = value;
+        onProjectChange(newProjectData);
     };
 
-    const handleAddExperience = () => {
-        onExperienceChange([...experienceData, {
-            companyName: '',
-            position: '',
-            startDate: '',
-            endDate: '',
-            location: '',
-            description: '',
-        }]);
+    const handleAddProject = () => {
+        onProjectChange([...projectData, { projectName: '', projectLink: '', description: '' }]);
     };
 
-    const handleDeleteExperience = (index) => {
-        const newExperienceData = [...experienceData];
-        newExperienceData.splice(index, 1);
-        onExperienceChange(newExperienceData);
+    const handleDeleteProject = (index) => {
+        const newProjectData = [...projectData];
+        newProjectData.splice(index, 1);
+        onProjectChange(newProjectData);
     };
 
     const handleToggleEdit = () => {
@@ -36,56 +29,29 @@ function Experience({ experienceData, onExperienceChange }) {
 
     return (
         <Box sx={{ marginBottom: 4 }}>
-            <Typography variant="h6" gutterBottom>Experience</Typography>
+            <Typography variant="h6" gutterBottom>Projects</Typography>
             <form onSubmit={(e) => e.preventDefault()}>
-                {experienceData.map((exp, index) => (
+                {projectData.map((project, index) => (
                     <Accordion key={index} sx={{ marginBottom: 2, border: 0.5, boxShadow: 3 }}>
                         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
-                                {exp.position || "New Experience Entry"}
+                                {project.projectName || "New Project Entry"}
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <TextField
-                                label="Company Name"
-                                name="companyName"
-                                value={exp.companyName}
+                                label="Project Name"
+                                name="projectName"
+                                value={project.projectName}
                                 onChange={(e) => handleInputChange(e, index)}
                                 fullWidth
                                 margin="normal"
                                 InputProps={{ readOnly: !isEditing }}
                             />
                             <TextField
-                                label="Position"
-                                name="position"
-                                value={exp.position}
-                                onChange={(e) => handleInputChange(e, index)}
-                                fullWidth
-                                margin="normal"
-                                InputProps={{ readOnly: !isEditing }}
-                            />
-                            <TextField
-                                label="Start Date"
-                                name="startDate"
-                                value={exp.startDate}
-                                onChange={(e) => handleInputChange(e, index)}
-                                fullWidth
-                                margin="normal"
-                                InputProps={{ readOnly: !isEditing }}
-                            />
-                            <TextField
-                                label="End Date"
-                                name="endDate"
-                                value={exp.endDate}
-                                onChange={(e) => handleInputChange(e, index)}
-                                fullWidth
-                                margin="normal"
-                                InputProps={{ readOnly: !isEditing }}
-                            />
-                            <TextField
-                                label="Location"
-                                name="location"
-                                value={exp.location}
+                                label="Project Link"
+                                name="projectLink"
+                                value={project.projectLink}
                                 onChange={(e) => handleInputChange(e, index)}
                                 fullWidth
                                 margin="normal"
@@ -94,7 +60,7 @@ function Experience({ experienceData, onExperienceChange }) {
                             <TextField
                                 label="Description"
                                 name="description"
-                                value={exp.description}
+                                value={project.description}
                                 onChange={(e) => handleInputChange(e, index)}
                                 fullWidth
                                 margin="normal"
@@ -104,7 +70,7 @@ function Experience({ experienceData, onExperienceChange }) {
                             />
                             {isEditing && (
                                 <Button
-                                    onClick={() => handleDeleteExperience(index)}
+                                    onClick={() => handleDeleteProject(index)}
                                     variant="contained"
                                     color="secondary"
                                     startIcon={<DeleteIcon />}
@@ -117,8 +83,8 @@ function Experience({ experienceData, onExperienceChange }) {
                     </Accordion>
                 ))}
                 {isEditing && (
-                    <Button type="button" onClick={handleAddExperience} startIcon={<Add />} variant="outlined"
-                            sx={{ marginTop: 2 }}>Add Experience</Button>
+                    <Button type="button" onClick={handleAddProject} startIcon={<Add />} variant="outlined"
+                            sx={{ marginTop: 2 }}>Add Project</Button>
                 )}
                 <Button onClick={handleToggleEdit} variant="contained" color={isEditing ? "primary" : "secondary"}
                         sx={{ marginTop: 2 }}>
@@ -129,10 +95,9 @@ function Experience({ experienceData, onExperienceChange }) {
     );
 }
 
-Experience.propTypes = {
-    experienceData: PropTypes.array.isRequired,
-    onExperienceChange: PropTypes.func.isRequired,
+Projects.propTypes = {
+    projectData: PropTypes.array.isRequired,
+    onProjectChange: PropTypes.func.isRequired,
 };
 
-export default Experience;
-
+export default Projects;
