@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+import Button from '@mui/material/Button';
 import Header from './components/Header';
 import Education from './components/Education';
 import Experience from './components/Experience';
@@ -43,6 +46,22 @@ function App() {
             sortable.destroy();
         };
     }, [sectionsOrder]);
+
+
+    const downloadPDF = () => {
+        const input = document.getElementById('cv-preview');
+
+        html2canvas(input, { scale: 2 })
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+                pdf.save('resume.pdf');
+            });
+    };
 
     return (
         <div className="container">
@@ -98,6 +117,11 @@ function App() {
                     projectData={projectData}
                     sectionsOrder={sectionsOrder}
                 />
+                <div className="download-container">
+                    <Button variant="contained" color="primary" onClick={downloadPDF}>
+                        Download as PDF
+                    </Button>
+                </div>
             </div>
         </div>
     );

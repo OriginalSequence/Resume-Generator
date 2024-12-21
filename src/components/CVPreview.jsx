@@ -3,13 +3,6 @@ import PropTypes from 'prop-types';
 import { Box, Typography, Paper, Divider, Grid } from '@mui/material';
 
 function CVPreview({ generalInfo = {}, additionalFields = [], educationData = [], experienceData = [], skillData = [], projectData = [], sectionsOrder = [] }) {
-    console.log('generalInfo:', generalInfo);
-    console.log('additionalFields:', additionalFields);
-    console.log('educationData:', educationData);
-    console.log('experienceData:', experienceData);
-    console.log('skillData:', skillData);
-    console.log('projectData:', projectData);
-
     const optionalFields = [
         generalInfo.phoneNumber,
         generalInfo.email,
@@ -20,7 +13,7 @@ function CVPreview({ generalInfo = {}, additionalFields = [], educationData = []
     const filledFields = optionalFields.filter(field => field);
 
     return (
-        <Paper sx={{ width: '210mm', height: '297mm', padding: 3, margin: 'auto', backgroundColor: '#fff', boxShadow: 3 }}>
+        <Paper sx={{ width: '210mm', height: '297mm', padding: 3, margin: 'auto', backgroundColor: '#fff', boxShadow: 3 }} id="cv-preview">
             <Box sx={{ textAlign: 'center', marginBottom: 4 }}>
                 <Typography variant="h4" gutterBottom>{generalInfo.name}</Typography>
                 <Box display="flex" justifyContent="center" alignItems="center">
