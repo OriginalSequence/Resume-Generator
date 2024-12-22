@@ -47,7 +47,6 @@ function App() {
         };
     }, [sectionsOrder]);
 
-
     const downloadPDF = () => {
         const input = document.getElementById('cv-preview');
 
@@ -61,6 +60,90 @@ function App() {
 
                 pdf.save('resume.pdf');
             });
+    };
+
+    const exampleData = {
+        generalInfo: {
+            name: 'John Doe',
+            email: 'John.doe@example.com',
+            phoneNumber: '9876543210',
+            location: 'San Francisco, CA',
+        },
+        educationData: [
+            {
+                schoolName: 'Stanford University',
+                titleOfStudy: 'Bachelor of Science in Computer Science',
+                dateOfStudy: '2016 - 2020',
+            },
+        ],
+        experienceData: [
+            {
+                position: 'Software Engineering Intern',
+                companyName: 'Facebook',
+                location: 'Menlo Park, CA',
+                startDate: 'Summer 2019',
+                endDate: 'Fall 2019',
+                description: 'Developed new features for the main Facebook app using React and Redux.\nCollaborated with cross-functional teams to improve app performance and user experience.\nConducted code reviews and provided feedback to peers.',
+            },
+            {
+                position: 'Backend Engineering Intern',
+                companyName: 'Amazon',
+                location: 'Seattle, WA',
+                startDate: 'Summer 2018',
+                endDate: 'Fall 2018',
+                description: 'Implemented scalable backend services using AWS, Node.js, and DynamoDB.\nWorked on data pipeline solutions to process and analyze large datasets.\nCollaborated with the frontend team to integrate APIs and ensure seamless functionality.',
+            },
+            {
+                position: 'Data Science Intern',
+                companyName: 'Airbnb',
+                location: 'San Francisco, CA',
+                startDate: 'Summer 2017',
+                endDate: 'Fall 2017',
+                description: 'Developed machine learning models to predict user preferences and improve recommendation systems.\nAnalyzed large datasets using Python, Pandas, and Scikit-Learn.\nPresented findings to the data science team and provided actionable insights.',
+            },
+        ],
+        skillData: [
+            {
+                skillGroup: 'Programming Languages',
+                skills: 'JavaScript, Python, Java, C++, SQL',
+            },
+            {
+                skillGroup: 'Frameworks & Libraries',
+                skills: 'React, Angular, Django, Node.js, Spring Boot',
+            },
+            {
+                skillGroup: 'Tools & Platforms',
+                skills: 'AWS, Docker, Git, Kubernetes, Jenkins',
+            },
+        ],
+        projectData: [
+            {
+                projectName: 'E-Commerce Platform',
+                projectLink: 'https://www.shopify.com/',
+                description: 'Led the development of an e-commerce platform using React, Node.js, and MongoDB.\nImplemented features such as user authentication, product management, and payment integration.\nDeployed the application on AWS and ensured scalability and performance.',
+            },
+            {
+                projectName: 'Chat Application',
+                description: 'Built a real-time chat application using Angular, Node.js, and Socket.io.\nImplemented features such as user registration, real-time messaging, and group chats.\nIntegrated the application with a MongoDB database for storing user data and messages.',
+            },
+            {
+                projectName: 'Sentiment Analysis Tool',
+                description: 'Developed a sentiment analysis tool using Python, Pandas, and Scikit-Learn.\nTrained machine learning models to analyze social media posts and classify sentiments.\nVisualized the analysis results using Plotly and presented insights to the team.',
+            },
+        ],
+        additionalFields: [],
+        sectionsOrder: ['education', 'experience', 'skills', 'projects'],
+    };
+
+
+    const generateExampleResume = () => {
+        setGeneralInfo(exampleData.generalInfo);
+        setEducationData(exampleData.educationData);
+        setExperienceData(exampleData.experienceData);
+        setSkillData(exampleData.skillData);
+        setProjectData(exampleData.projectData);
+        setAdditionalFields(exampleData.additionalFields);
+        setSectionsOrder(exampleData.sectionsOrder);
     };
 
     return (
@@ -118,7 +201,10 @@ function App() {
                     sectionsOrder={sectionsOrder}
                 />
                 <div className="download-container">
-                    <Button variant="contained" color="primary" onClick={downloadPDF}>
+                    <Button variant="contained" color="primary" onClick={generateExampleResume}>
+                        Generate Template
+                    </Button>
+                    <Button variant="contained" color="secondary" onClick={downloadPDF} sx={{ ml: 2 }}>
                         Download as PDF
                     </Button>
                 </div>

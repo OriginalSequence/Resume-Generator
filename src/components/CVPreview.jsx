@@ -14,7 +14,7 @@ function CVPreview({ generalInfo = {}, additionalFields = [], educationData = []
 
     return (
         <Paper sx={{ width: '210mm', height: '297mm', padding: 3, margin: 'auto', backgroundColor: '#fff', boxShadow: 3 }} id="cv-preview">
-            <Box sx={{ textAlign: 'center', marginBottom: 4 }}>
+            <Box sx={{ textAlign: 'center', marginBottom: 2 }}>
                 <Typography variant="h4" gutterBottom>{generalInfo.name}</Typography>
                 <Box display="flex" justifyContent="center" alignItems="center">
                     {filledFields.map((field, index) => (
@@ -29,7 +29,7 @@ function CVPreview({ generalInfo = {}, additionalFields = [], educationData = []
             {sectionsOrder.map((section) => (
                 <React.Fragment key={section}>
                     {section === 'education' && educationData.length > 0 && (
-                        <Box sx={{ marginBottom: 4 }}>
+                        <Box sx={{ marginBottom: 2 }}>
                             <Typography variant="h5" gutterBottom>Education</Typography>
                             <Divider sx={{ marginBottom: 2 }} />
                             {educationData.map((edu, index) => (
@@ -51,7 +51,7 @@ function CVPreview({ generalInfo = {}, additionalFields = [], educationData = []
                         </Box>
                     )}
                     {section === 'experience' && experienceData.length > 0 && (
-                        <Box sx={{ marginBottom: 4 }}>
+                        <Box sx={{ marginBottom: 2 }}>
                             <Typography variant="h5" gutterBottom>Experience</Typography>
                             <Divider sx={{ marginBottom: 2 }} />
                             {experienceData.map((exp, index) => (
@@ -78,11 +78,11 @@ function CVPreview({ generalInfo = {}, additionalFields = [], educationData = []
                         </Box>
                     )}
                     {section === 'skills' && skillData.length > 0 && (
-                        <Box sx={{ marginBottom: 4 }}>
+                        <Box sx={{ marginBottom: 2 }}>
                             <Typography variant="h5" gutterBottom>Skills</Typography>
                             <Divider sx={{ marginBottom: 2 }} />
                             {skillData.map((skill, index) => (
-                                <Box key={index} sx={{ marginBottom: 2 }}>
+                                <Box key={index} sx={{ marginBottom: 1 }}>
                                     <Grid container alignItems="center">
                                         <Grid item>
                                             <Typography variant="body1" sx={{ fontWeight: 'bold', marginRight: 1 }}>
@@ -100,7 +100,7 @@ function CVPreview({ generalInfo = {}, additionalFields = [], educationData = []
                         </Box>
                     )}
                     {section === 'projects' && projectData.length > 0 && (
-                        <Box sx={{ marginBottom: 4 }}>
+                        <Box sx={{ marginBottom: 2 }}>
                             <Typography variant="h5" gutterBottom>Projects</Typography>
                             <Divider sx={{ marginBottom: 2 }} />
                             {projectData.map((project, index) => (
