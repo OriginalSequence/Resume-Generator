@@ -5,6 +5,9 @@ I developed a Resume Generator web app using React and Material-UI to make it ea
 **Purpose:**
 The goal of this project was to provide a simple and efficient way for users to build their resumes, offering pre-designed templates and an intuitive interface for adding personal and professional details.
 
+**Preview:**
+![image](https://github.com/user-attachments/assets/20d6fd0c-afb0-4d40-84dd-73df5bfecca7)
+
 **Technologies Used:**
 - **Frontend:** React, Material-UI
 - **PDF Generation:** html2canvas, jsPDF
@@ -20,6 +23,37 @@ The goal of this project was to provide a simple and efficient way for users to 
 
 **Outcome:**
 The Resume Generator provides a solution for creating professional one-page resumes. It makes the process smooth and straightforward, from entering data to getting a downloadable PDF. This project improved my React skills and taught me how to use Material-UI and document generation, rendering and downloading.
+
+## How to Clone and Run the Project
+
+### Prerequisites
+
+- Node.js and npm installed on your machine.
+
+### Steps
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/OriginalSequence/Resume-Generator.git
+   ```
+
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd Resume-Generator
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+4. **Run the Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+5. **Open Your Browser**:
+   - Navigate to the URL provided in the terminal output (e.g., http://localhost:3000), to see the application running in your preffered web browser.
 
 
 **WIP and Future Ideas:**
